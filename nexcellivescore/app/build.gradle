@@ -67,6 +67,11 @@ dependencies {
 
     implementation 'org.apache.commons:commons-lang3:3.6'
 
+    //Arch
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    implementation 'com.google.android.material:material:1.1.0'
+
     //Test
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     testImplementation 'junit:junit:4.12'

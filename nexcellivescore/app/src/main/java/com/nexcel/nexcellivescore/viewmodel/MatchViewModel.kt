@@ -1,21 +1,47 @@
 package com.nexcel.nexcellivescore.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.nexcel.nexcellivescore.entity.FootballMatch
+import com.nexcel.nexcellivescore.usecase.GetFootballMatchListUseCase
+import com.nexcel.nexcellivescore.usecase.GetFootballMatchListUseCaseImpl
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
-class MatchViewModel(application: Application) : AndroidViewModel(application) {
+class MatchViewModel : ViewModel() {
     private val matchesDataSource = MutableLiveData<List<FootballMatch>>()
 
-    fun addFootballMatchsObserver(
+    private val getFootballMatchListUseCase: GetFootballMatchListUseCase = GetFootballMatchListUseCaseImpl()
+    private val compositeDisposable = CompositeDisposable()
+
+    fun updateCurrentMatchList() {
+        getFootballMatchListUseCase.execute()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(onSuccess = { footBallMatchList ->
+                matchesDataSource.postValue(footBallMatchList)
+            }, onError = {
+                Timber.d("Failed to update match list with error: $it")
+            }).addTo(compositeDisposable)
+    }
+
+    fun addFootballMatchListObserver(
         owner: LifecycleOwner,
         onMatchListChanged: (matchList: List<FootballMatch>) -> Unit
     ) {
         matchesDataSource.observe(owner, Observer {
             onMatchListChanged.invoke(it.orEmpty())
         })
+    }
+
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
     }
 }
