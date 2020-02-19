@@ -50,3 +50,14 @@ fun Date.getDisplayDateOfMonthText(): String {
     val dayOfMonth = getDayOfMonth()
     return "$dayOfMonth $month"
 }
+
+fun Date.isTheSameDay(date: Date): Boolean {
+    val inputCalendar = Calendar.getInstance().apply {
+        time = date
+    }
+    val currentCalendar = Calendar.getInstance().apply {
+        time = this@isTheSameDay
+    }
+    return inputCalendar.get(Calendar.DAY_OF_YEAR) == currentCalendar.get(Calendar.DAY_OF_YEAR) &&
+            inputCalendar.get(Calendar.YEAR) == currentCalendar.get(Calendar.YEAR)
+}

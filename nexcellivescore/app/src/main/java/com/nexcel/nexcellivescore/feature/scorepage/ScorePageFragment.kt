@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.nexcel.nexcellivescore.R
-import com.nexcel.nexcellivescore.viewmodel.MatchViewModel
 import kotlinx.android.synthetic.main.fragment_score_page.calendarNavigationList
+import kotlinx.android.synthetic.main.fragment_score_page.dailyScoreList
 import java.util.Date
 
-class ScorePageFragment : Fragment(), CalendarBarAdapter.ItemSelectedListener {
-
-    lateinit var matchViewModel: MatchViewModel
+class ScorePageFragment : Fragment(),
+    CalendarBarAdapter.ItemSelectedListener,
+    OnPageChangeListener {
+    private lateinit var scorePagerAdapter: ScorePagerAdapter
+    private lateinit var calendarBarAdapter: CalendarBarAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,29 +28,25 @@ class ScorePageFragment : Fragment(), CalendarBarAdapter.ItemSelectedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val today = Date()
         calendarNavigationList.apply {
-            adapter = CalendarBarAdapter(Date(), this@ScorePageFragment)
+            calendarBarAdapter = CalendarBarAdapter(today, this@ScorePageFragment)
+            adapter = calendarBarAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        activity?.let { activity ->
-            matchViewModel = ViewModelProviders.of(activity).get(MatchViewModel::class.java)
-            matchViewModel.addFootballMatchListObserver(
-                this,
-                onMatchListChanged = { footballMatchList ->
-                    footballMatchList.forEach { match ->
-                        Toast.makeText(context, "Match: $match", Toast.LENGTH_SHORT).show()
-                    }
-                })
-            matchViewModel.updateCurrentMatchList()
+        dailyScoreList.apply {
+            activity?.supportFragmentManager?.let { fragmentManager ->
+                scorePagerAdapter = ScorePagerAdapter(fragmentManager, today)
+                adapter = scorePagerAdapter
+                addOnPageChangeListener(this@ScorePageFragment)
+            }
         }
+        selectDate(today)
     }
 
     override fun selectLiveItem() {
-
+        dailyScoreList.setCurrentItem(0, true)
     }
 
     override fun selectCalendar() {
@@ -57,6 +54,19 @@ class ScorePageFragment : Fragment(), CalendarBarAdapter.ItemSelectedListener {
     }
 
     override fun selectDate(date: Date) {
+        scorePagerAdapter.indexOfDate(date).takeIf { dateIndex -> dateIndex >= 0 }
+            ?.let { dateIndex ->
+                dailyScoreList.setCurrentItem(dateIndex, true)
+            }
+    }
 
+    override fun onPageScrollStateChanged(state: Int) {
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+    }
+
+    override fun onPageSelected(position: Int) {
+        calendarBarAdapter.currentFocusedPosition = position
     }
 }

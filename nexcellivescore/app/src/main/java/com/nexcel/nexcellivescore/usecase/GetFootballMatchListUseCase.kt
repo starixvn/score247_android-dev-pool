@@ -1,7 +1,7 @@
 package com.nexcel.nexcellivescore.usecase
 
-import com.nexcel.nexcellivescore.datasource.MatchRepository
-import com.nexcel.nexcellivescore.datasource.MatchRepositoryImpl
+import com.nexcel.nexcellivescore.datasource.FootballRepository
+import com.nexcel.nexcellivescore.datasource.FootballRepositoryImpl
 import com.nexcel.nexcellivescore.entity.FootballMatch
 import io.reactivex.Single
 
@@ -10,10 +10,10 @@ interface GetFootballMatchListUseCase {
 }
 
 class GetFootballMatchListUseCaseImpl : GetFootballMatchListUseCase {
-    private val matchRepository: MatchRepository = MatchRepositoryImpl()
+    private val footballRepository: FootballRepository = FootballRepositoryImpl()
 
     override fun execute(): Single<List<FootballMatch>> {
-        return matchRepository.getFootballMatchList()
+        return footballRepository.getMatchList()
     }
 
 }

@@ -5,14 +5,14 @@ import io.reactivex.Single
 import java.util.*
 import javax.inject.Inject
 
-interface MatchRepository {
-    fun getFootballMatchList(): Single<List<FootballMatch>>
+interface FootballRepository {
+    fun getMatchList(): Single<List<FootballMatch>>
 }
 
-class MatchRepositoryImpl @Inject constructor(
+class FootballRepositoryImpl @Inject constructor(
 
-) : MatchRepository {
-    override fun getFootballMatchList(): Single<List<FootballMatch>> {
+) : FootballRepository {
+    override fun getMatchList(): Single<List<FootballMatch>> {
         return Single.just(listOf(FootballMatch(Date(), "Juventus FC", "Barcelona FC")))
     }
 }

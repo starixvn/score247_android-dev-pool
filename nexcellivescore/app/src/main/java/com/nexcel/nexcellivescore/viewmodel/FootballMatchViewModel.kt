@@ -14,7 +14,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class MatchViewModel : ViewModel() {
+class FootballMatchViewModel : ViewModel() {
     private val matchesDataSource = MutableLiveData<List<FootballMatch>>()
 
     private val getFootballMatchListUseCase: GetFootballMatchListUseCase = GetFootballMatchListUseCaseImpl()

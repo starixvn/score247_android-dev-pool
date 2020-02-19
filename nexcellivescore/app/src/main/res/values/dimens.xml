@@ -2,6 +2,7 @@
 <resources>
     <dimen name="tool_bar_title_size">16sp</dimen>
 
+    <dimen name="text_size_large">16sp</dimen>
     <dimen name="text_size_normal">12sp</dimen>
     <dimen name="text_size_medium">8sp</dimen>
 

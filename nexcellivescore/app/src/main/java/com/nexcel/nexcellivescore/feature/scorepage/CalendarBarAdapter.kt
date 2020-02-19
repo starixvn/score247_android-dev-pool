@@ -22,8 +22,7 @@ class CalendarBarAdapter(
     private val today: Date,
     private val itemSelectedListener: ItemSelectedListener
 ) : RecyclerView.Adapter<ViewHolder>() {
-    var currentFocusedPosition: Int =
-        TODAY_INDEX
+    var currentFocusedPosition: Int = TODAY_INDEX
         set(value) {
             if (value in 0 until TOTAL_ITEMS) {
                 val lastFocusedPosition = field
