@@ -1,4 +1,4 @@
-package com.nexcel.nexcellivescore
+package com.nexcel.nexcellivescore.feature.scorepage
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.nexcel.nexcellivescore.R
 import com.nexcel.nexcellivescore.utils.increase
 import com.nexcel.nexcellivescore.utils.decrease
 import com.nexcel.nexcellivescore.utils.getDisplayDateOfMonthText
@@ -21,7 +22,8 @@ class CalendarBarAdapter(
     private val today: Date,
     private val itemSelectedListener: ItemSelectedListener
 ) : RecyclerView.Adapter<ViewHolder>() {
-    var currentFocusedPosition: Int = TODAY_INDEX
+    var currentFocusedPosition: Int =
+        TODAY_INDEX
         set(value) {
             if (value in 0 until TOTAL_ITEMS) {
                 val lastFocusedPosition = field
@@ -52,7 +54,8 @@ class CalendarBarAdapter(
         }
     }
 
-    override fun getItemCount(): Int = TOTAL_ITEMS
+    override fun getItemCount(): Int =
+        TOTAL_ITEMS
 
     override fun getItemViewType(position: Int): Int {
         return when (position) {
@@ -68,7 +71,9 @@ class CalendarBarAdapter(
             DATE_ITEM -> {
                 val itemDate = when {
                     position > TODAY_INDEX -> today.increase(position - TODAY_INDEX)
-                    position < TODAY_INDEX -> today.decrease(TODAY_INDEX - position)
+                    position < TODAY_INDEX -> today.decrease(
+                        TODAY_INDEX - position
+                    )
                     else -> today
                 }
                 (holder as DateViewHolder).setData(itemDate, focused, position)
