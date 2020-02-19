@@ -5,4 +5,7 @@
     <string name="leagues">Leagues</string>
     <string name="news">News</string>
     <string name="tv">TV</string>
+    <string name="button_menu_left">buttonMenuLeft</string>
+    <string name="soccer">Soccer</string>
+    <string name="today">Today</string>
 </resources>

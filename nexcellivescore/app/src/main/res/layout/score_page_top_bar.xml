@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/defaultBlue">
+
+    <ImageButton
+        android:id="@+id/buttonMenuLeft"
+        android:layout_width="@dimen/tool_bar_icon_size"
+        android:layout_height="@dimen/tool_bar_icon_size"
+        android:layout_margin="@dimen/app_normal_margin"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/button_menu_left"
+        android:scaleType="center"
+        android:src="@drawable/ic_hambuger_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/sportName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/soccer"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tool_bar_title_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/buttonSelectSport"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/app_medium_margin"
+            android:src="@drawable/ic_union"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/sportName"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/buttonSearch"
+        android:layout_width="@dimen/tool_bar_icon_size"
+        android:layout_height="@dimen/tool_bar_icon_size"
+        android:layout_marginTop="@dimen/app_normal_margin"
+        android:layout_marginEnd="@dimen/app_medium_margin"
+        android:layout_marginRight="@dimen/app_medium_margin"
+        android:layout_marginBottom="@dimen/app_normal_margin"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/button_menu_left"
+        android:scaleType="center"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonMenuRight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/buttonMenuRight"
+        android:layout_width="@dimen/tool_bar_icon_size"
+        android:layout_height="@dimen/tool_bar_icon_size"
+        android:layout_margin="@dimen/app_normal_margin"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/button_menu_left"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_vertical_three_dots"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

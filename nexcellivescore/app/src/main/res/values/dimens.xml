@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tool_bar_title_size">16sp</dimen>
+
+    <dimen name="text_size_normal">12sp</dimen>
+    <dimen name="text_size_medium">8sp</dimen>
+
+    <dimen name="tool_bar_icon_size">24dp</dimen>
+
+    <dimen name="app_horizontal_margin">16dp</dimen>
+    <dimen name="app_normal_margin">12dp</dimen>
+    <dimen name="app_medium_margin">8dp</dimen>
+    <dimen name="app_small_margin">4dp</dimen>
+
+    <dimen name="calendar_width">60dp</dimen>
+
+</resources>
