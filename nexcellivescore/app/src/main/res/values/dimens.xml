@@ -14,5 +14,6 @@
     <dimen name="app_small_margin">4dp</dimen>
 
     <dimen name="calendar_width">60dp</dimen>
+    <dimen name="favorite_button_size">40dp</dimen>
 
 </resources>

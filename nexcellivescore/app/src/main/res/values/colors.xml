@@ -6,7 +6,11 @@
     <color name="darkYellow">#FF7D00</color>
     <color name="white">#FFFFFF</color>
     <color name="defaultBlue">#1B3464</color>
+    <color name="lightBlue">#055888</color>
     <color name="darkBlue">#0B1E42</color>
     <color name="defaultBlack">#3A3B45</color>
     <color name="defaultGrey">#9193A1</color>
+    <color name="transparent">#0000</color>
+    <color name="defaultRed">#FF0000</color>
+    <color name="scoreBlue">#098BDB</color>
 </resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.nexcel.nexcellivescore.NexcelTextView
+        android:id="@+id/leagueCode"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:background="@color/lightBlue"
+        android:gravity="center"
+        android:paddingStart="@dimen/app_small_margin"
+        android:paddingLeft="@dimen/app_small_margin"
+        android:paddingTop="@dimen/app_medium_margin"
+        android:paddingEnd="@dimen/app_small_margin"
+        android:paddingRight="@dimen/app_small_margin"
+        android:paddingBottom="@dimen/app_medium_margin"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:nexcelFont="@string/roboto_regular"
+        tools:text="ISR D4" />
+
+    <com.nexcel.nexcellivescore.NexcelTextView
+        android:id="@+id/startTime"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:paddingStart="@dimen/app_small_margin"
+        android:paddingLeft="@dimen/app_small_margin"
+        android:paddingTop="@dimen/app_medium_margin"
+        android:paddingEnd="@dimen/app_small_margin"
+        android:paddingRight="@dimen/app_small_margin"
+        android:paddingBottom="@dimen/app_medium_margin"
+        android:textColor="@color/defaultBlack"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/leagueCode"
+        app:layout_constraintTop_toTopOf="parent"
+        app:nexcelFont="@string/roboto_regular"
+        tools:text="09:30" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scoreLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/scoreDetailsLayout"
+        app:layout_constraintEnd_toStartOf="@id/buttonFavorite"
+        app:layout_constraintStart_toEndOf="@id/startTime"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.nexcel.nexcellivescore.NexcelTextView
+            android:id="@+id/fullTimeScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_medium_margin"
+            android:layout_marginBottom="@dimen/app_small_margin"
+            android:textColor="@color/defaultRed"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toTopOf="@id/halfTimeScore"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:nexcelFont="@string/roboto_regular"
+            tools:text="(2 - 1)" />
+
+        <com.nexcel.nexcellivescore.NexcelTextView
+            android:id="@+id/halfTimeScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/app_medium_margin"
+            android:textColor="@color/scoreBlue"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullTimeScore"
+            app:nexcelFont="@string/roboto_regular"
+            tools:text="(0 - 0)" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.nexcel.nexcellivescore.NexcelTextView
+        android:id="@+id/homeTeamName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|end"
+        android:paddingStart="@dimen/app_small_margin"
+        android:paddingLeft="@dimen/app_small_margin"
+        android:paddingEnd="@dimen/app_medium_margin"
+        android:paddingRight="@dimen/app_medium_margin"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintBottom_toTopOf="@id/scoreDetailsLayout"
+        app:layout_constraintEnd_toStartOf="@id/scoreLayout"
+        app:layout_constraintStart_toEndOf="@id/startTime"
+        app:layout_constraintTop_toTopOf="parent"
+        app:nexcelFont="@string/roboto_medium"
+        tools:text="Beitar Nahariya" />
+
+    <com.nexcel.nexcellivescore.NexcelTextView
+        android:id="@+id/awayTeamName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="@dimen/app_medium_margin"
+        android:paddingLeft="@dimen/app_medium_margin"
+        android:paddingEnd="@dimen/app_small_margin"
+        android:paddingRight="@dimen/app_small_margin"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintBottom_toTopOf="@id/scoreDetailsLayout"
+        app:layout_constraintEnd_toStartOf="@id/buttonFavorite"
+        app:layout_constraintStart_toEndOf="@id/scoreLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:nexcelFont="@string/roboto_medium"
+        tools:text="Beitar Nahariya" />
+
+    <ImageButton
+        android:id="@+id/buttonFavorite"
+        android:layout_width="@dimen/favorite_button_size"
+        android:layout_height="0dp"
+        android:background="@color/transparent"
+        android:paddingTop="@dimen/app_normal_margin"
+        android:paddingBottom="@dimen/app_normal_margin"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scoreDetailsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonFavorite"
+        app:layout_constraintStart_toEndOf="@id/startTime">
+
+        <com.nexcel.nexcellivescore.NexcelTextView
+            android:id="@+id/scoreDetail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:padding="@dimen/app_small_margin"
+            android:textColor="@color/defaultBlack"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:nexcelFont="@string/roboto_regular"
+            tools:text="FT [1 - 1], AET [1 - 1], AGG [3 - 3], PEN [5 - 4]" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

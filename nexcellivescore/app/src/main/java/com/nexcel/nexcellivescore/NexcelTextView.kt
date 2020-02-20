@@ -1,6 +1,7 @@
 package com.nexcel.nexcellivescore
 
 import android.content.Context
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.TextView
 import timber.log.Timber
@@ -14,7 +15,9 @@ class NexcelTextView(
 ) : TextView(context, attributeSet, defStyleAttr) {
     constructor(context: Context) : this(context, null, 0)
 
-    private var nexcelFont: String = DEFAULT_TEXT_FONT
+    constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
+
+    private var fontName: String = DEFAULT_TEXT_FONT
 
     init {
         attributeSet?.run {
@@ -22,10 +25,13 @@ class NexcelTextView(
                 context.obtainStyledAttributes(this, R.styleable.NexcelTextView, defStyleAttr, 0)
 
             try {
-                nexcelFont = typedArray.getString(R.styleable.NexcelTextView_nexcelFont)
+                fontName = typedArray.getString(R.styleable.NexcelTextView_nexcelFont)
                     ?: DEFAULT_TEXT_FONT
+                val nexcelFont = Typeface.createFromAsset(context.resources.assets, fontName)
+                typeface = nexcelFont
             } catch (exception: Exception) {
                 Timber.e("Failed to obtain font with error: $exception")
+                fontName = DEFAULT_TEXT_FONT
             } finally {
                 typedArray.recycle()
             }

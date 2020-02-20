@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:minWidth="@dimen/calendar_width">
 
-    <TextView
+    <com.nexcel.nexcellivescore.NexcelTextView
         android:id="@+id/dayOfWeek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,9 +17,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:nexcelFont="@string/roboto_regular"
         tools:text="TODAY" />
 
-    <TextView
+    <com.nexcel.nexcellivescore.NexcelTextView
         android:id="@+id/dateOfMonth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dayOfWeek"
+        app:nexcelFont="@string/roboto_regular"
         tools:text="12 SEP" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

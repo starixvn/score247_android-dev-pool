@@ -7,9 +7,10 @@ import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 
 data class FootballMatch(
-    val startDateTime: Date,
     val homeTeam: String,
-    val awayTeam: String
+    val awayTeam: String,
+    val startDateTime: Date,
+    val leagueCode: String
 ) {
     private var duration = AtomicInteger(0)
 

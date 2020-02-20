@@ -61,3 +61,12 @@ fun Date.isTheSameDay(date: Date): Boolean {
     return inputCalendar.get(Calendar.DAY_OF_YEAR) == currentCalendar.get(Calendar.DAY_OF_YEAR) &&
             inputCalendar.get(Calendar.YEAR) == currentCalendar.get(Calendar.YEAR)
 }
+
+fun Date.getDisplayTime(): String {
+    val currentCalendar = Calendar.getInstance().apply {
+        time = this@getDisplayTime
+    }
+    val hoursString = String.format("%02d", currentCalendar.get(Calendar.HOUR_OF_DAY))
+    val minutesString = String.format("%02d", currentCalendar.get(Calendar.MINUTE))
+    return "$hoursString:$minutesString"
+}

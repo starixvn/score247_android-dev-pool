@@ -13,14 +13,22 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
+import java.util.Date
 
 class FootballMatchViewModel : ViewModel() {
     private val matchesDataSource = MutableLiveData<List<FootballMatch>>()
 
-    private val getFootballMatchListUseCase: GetFootballMatchListUseCase = GetFootballMatchListUseCaseImpl()
+    private val getFootballMatchListUseCase: GetFootballMatchListUseCase =
+        GetFootballMatchListUseCaseImpl()
     private val compositeDisposable = CompositeDisposable()
 
-    fun updateCurrentMatchList() {
+    var currentDate: Date = Date()
+        set(value) {
+            field = value
+            updateCurrentMatchList()
+        }
+
+    private fun updateCurrentMatchList() {
         getFootballMatchListUseCase.execute()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
